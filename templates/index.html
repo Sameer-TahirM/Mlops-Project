@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #333;
+        }
+
+        h2.error {
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Employee Prediction</h1>
+
+    <form action="/predict" method="post">
+        <label for="satisfaction_level">Satisfaction Level:</label>
+        <input type="text" name="satisfaction_level" required>
+
+        <label for="last_evaluation">Last Evaluation:</label>
+        <input type="text" name="last_evaluation" required>
+
+        <label for="number_project">Number of Projects:</label>
+        <input type="text" name="number_project" required>
+
+        <label for="average_monthly_hours">Average Monthly Hours:</label>
+        <input type="text" name="average_monthly_hours" required>
+
+        <label for="time_spend_company">Time Spent in Company:</label>
+        <input type="text" name="time_spend_company" required>
+
+        <label for="work_accident">Work Accident (1 for Yes, 0 for No):</label>
+        <input type="text" name="work_accident" required>
+
+        <label for="promotion_last_5years">Promotion Last 5 Years (1 for Yes, 0 for No):</label>
+        <input type="text" name="promotion_last_5years" required>
+
+        <label for="low">Low Salary (1 for Yes, 0 for No):</label>
+        <input type="text" name="low" required>
+
+        <label for="medium">Medium Salary (1 for Yes, 0 for No):</label>
+        <input type="text" name="medium" required>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+        <h2>Prediction: {{ prediction }}</h2>
+    {% endif %}
+
+    {% if error %}
+        <h2 class="error">Error: {{ error }}</h2>
+    {% endif %}
+
+</body>
+</html>
